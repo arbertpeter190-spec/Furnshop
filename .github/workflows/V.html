@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Furnshop - considered furniture for everyday living.">
+    <title>Furnshop | Considered furniture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="V.css">
+    <style>
+        .shop-section { padding-top: 34px; padding-bottom: 42px; }
+        .compact-total { display: block; margin: 14px 0 20px; font-size: 11px; color: var(--muted); }
+        .craft-section { margin-top: 0; }
+        .craft-copy { padding-top: 36px !important; padding-bottom: 45px !important; }
+        .product-card { margin-top: 0; padding-top: 0; }
+        .product-image { margin-top: 0; }
+        .product-image img { display: block; width: 100%; height: 100%; object-fit: cover; margin: 0; }
+        .admin-products { border-top: 1px solid var(--line); margin-top: 30px; padding-top: 22px; }
+        .admin-product-row { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding: 10px 0; font-size: 12px; }
+        .admin-product-row img { width: 42px; height: 42px; object-fit: cover; }
+        .admin-product-row span { flex: 1; }
+        .admin-product-row button { font-size: 11px; color: var(--clay); text-decoration: underline; }
+        .admin-empty { font-size: 12px; color: var(--muted); }
+        .upload-file-name { display: block; margin-top: 8px; color: var(--clay); font-size: 11px; }
+        .admin-modal { overflow-y: auto; align-items: flex-start; }
+        .admin-card { margin: 20px auto; max-height: none; min-height: min(720px, calc(100vh - 40px)); }
+        @media (max-width: 600px) { .admin-modal { padding: 0; } .admin-card { width: 100%; min-height: 100vh; margin: 0; padding: 58px 24px 32px; } }
+        .back-to-products { display: block; margin-top: 18px; padding: 0; color: var(--muted); font-size: 12px; text-decoration: underline; text-underline-offset: 4px; }
+        .back-to-products:hover { color: var(--clay); }
+        .brand { display: inline-flex; align-items: center; gap: 9px; letter-spacing: -.06em; }
+        .brand .brand-mark { display: grid; place-items: center; width: 27px; height: 27px; border: 1px solid var(--clay); border-radius: 50%; color: var(--clay); font: 600 16px var(--serif); letter-spacing: 0; }
+        .welcome-banner { padding: 72px 9% 64px; border-bottom: 1px solid var(--line); text-align: center; background: var(--cream); }
+        .welcome-banner::after { content: ''; display: block; width: 48px; height: 1px; margin: 20px auto 0; background: var(--clay); }
+        .welcome-banner h1 { margin: 0; color: var(--ink); font: 500 clamp(34px, 5vw, 62px)/1.05 var(--serif); letter-spacing: -.045em; }
+        .welcome-banner h1 span { color: var(--clay); font-style: italic; }
+        .welcome-banner p { max-width: 430px; margin: 16px auto 0; color: var(--muted); font-size: 13px; }
+        @media (max-width: 600px) { .welcome-banner { padding: 52px 8% 46px; } .welcome-banner p { font-size: 12px; } }
+        @media (max-width: 800px) { .main-nav { display: flex; position: static; flex-direction: row; gap: 14px; overflow-x: auto; } .main-nav a { white-space: nowrap; } .site-header { gap: 14px; } .header-actions .contact-phone { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="announcement">Complimentary delivery on orders over Tsh 1,500 <span>•</span> 30-day returns</div>
+    <header class="site-header"><a class="brand" href="#top" aria-label="Furnshop home"><span class="brand-mark">F</span><span>urn<span>shop</span></span></a><nav class="main-nav contact-nav" aria-label="Contact numbers"><a href="tel:+255772913910">+255 772 913 910</a><a href="tel:+25549212683">+255 492 126 83</a></nav><div class="header-actions"><button class="admin-button" data-action="admin">Admin</button><button class="icon-button bag-button" aria-label="Open shopping bag" data-action="cart">♧<b id="cart-count">0</b></button></div></header>
+    <main id="top">
+        <section class="welcome-banner" aria-labelledby="welcome-title"><p class="eyebrow">Welcome to our home</p><h1 id="welcome-title">Welcome to <span>Fred Furniture</span></h1><p>Beautiful pieces, thoughtfully chosen to make every room feel like home.</p></section>
+        <section class="shop-section" id="shop"><div class="shop-toolbar"><div class="category-tabs" role="tablist"><button class="active" data-filter="All">All pieces</button><button data-filter="Seating">Seating</button><button data-filter="Tables">Tables</button><button data-filter="Bedrooms">Bedrooms</button></div><label class="sort-label">Sort by <select id="sort-select"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select></label></div><span class="product-total compact-total" id="product-total">12 pieces</span><div class="product-grid" id="product-grid"></div><div class="empty-state" id="empty-state" hidden><span>⌂</span><h3>No pieces found</h3><p>Try a different search or browse all pieces.</p><button class="button button-outline" data-filter="All">View all</button></div></section>
+    </main>
+    <footer><a class="brand" href="#top">furn<span>shop</span></a><p>Quietly making room for good living.</p><div class="footer-links"><a href="#shop">Shop</a><a href="#story">About</a><a href="tel:+255772913910">+255 772 913 910</a><a href="tel:+25549212683">+255 492 126 83</a></div></footer>
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping bag" aria-hidden="true"><div class="drawer-header"><div><p class="eyebrow">Your selection</p><h2>Shopping bag</h2></div><button class="close-button" aria-label="Close shopping bag" data-action="close-cart"></button></div><div class="cart-items" id="cart-items"></div><div class="cart-footer"><div class="subtotal"><span>Selected total</span><strong id="cart-total">Tsh 0</strong></div><p>Call us to order your selected pieces.</p><a class="button button-dark call-button" href="tel:+255772913910">Call to order <span>→</span></a><div class="cart-phones"><a href="tel:+255772913910">+255 772 913 910</a><a href="tel:+25549212683">+255 492 126 83</a></div></div></aside><div class="drawer-scrim" id="drawer-scrim" data-action="close-cart"></div>
+    <div class="product-modal" id="product-modal" hidden><div class="modal-card"><button class="close-button" aria-label="Close product details" data-action="close-modal"></button><div id="modal-content"></div></div></div>
+    <div class="admin-modal" id="admin-modal" hidden><div class="admin-card"><button class="close-button" aria-label="Close admin dashboard" data-action="close-admin"></button><p class="eyebrow">Store management</p><h2>Admin dashboard</h2><p class="admin-intro">Add a new piece to the Furnshop collection.</p><form id="product-form" novalidate><label>Product name<input name="name" required placeholder="e.g. Riva armchair"></label><div class="admin-fields"><label>Category<select name="category" required><option value="">Choose category</option><option>Seating</option><option>Tables</option><option>Bedrooms</option></select></label><label>Price<input name="price" type="number" min="0" step="1" required placeholder="680"></label></div><label>Description<textarea name="description" rows="3" required placeholder="Tell customers about this piece"></textarea></label><label class="upload-area" for="product-image"><span>+ Add product image</span><small>PNG, JPG, WEBP up to 5MB</small><input id="product-image" name="image" type="file" accept="image/png,image/jpeg,image/webp"></label><span class="upload-file-name" id="upload-file-name">No image selected</span><div class="image-preview" id="image-preview" hidden><img id="image-preview-img" alt="Selected product preview"><button type="button" class="remove-preview" data-action="remove-image">Remove image</button></div><button class="button button-dark" type="submit">Publish product <span>→</span></button></form><div class="admin-products"><p class="eyebrow">Uploaded products</p><div id="admin-products-list"></div></div></div></div><div class="toast" id="toast" role="status"></div><script src="V.js"></script>
+</body>
+</html>
