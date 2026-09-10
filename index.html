@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Furnshop — Demo</title>
+  <!-- Your CSS (paste the CSS you provided into a file named styles.css or inline) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Minimal skeleton for the app to run. Expand to match your full markup / classes -->
+  <header class="site-header">
+    <div class="brand">Hearth <span>Design</span></div>
+    <nav class="main-nav">
+      <a href="#" data-filter="All" data-filter-link>All</a>
+      <a href="#" data-filter="Seating">Seating</a>
+      <a href="#" data-filter="Tables">Tables</a>
+      <a href="#" data-filter="Bedrooms">Bedrooms</a>
+    </nav>
+    <div class="header-actions">
+      <button data-action="cart" class="icon-button bag-button">👜<b id="cart-count">0</b></button>
+      <button data-action="admin" class="admin-button">Admin</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="shop-section">
+      <div class="section-heading">
+        <h2>Shop</h2>
+        <div class="product-total" id="product-total">0 pieces</div>
+      </div>
+
+      <div class="shop-toolbar">
+        <div class="category-tabs" aria-hidden="false">
+          <!-- category buttons handled by data-filter above -->
+        </div>
+        <label class="sort-label">Sort
+          <select id="sort-select">
+            <option value="">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <span>Nothing yet</span>
+        <h3>No products found</h3>
+        <p>Try another filter or search.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart drawer -->
+  <div id="drawer-scrim" class="drawer-scrim" aria-hidden="true"></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <h2>Bag</h2>
+      <button data-action="close-cart" class="close-button">Close</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="subtotal">
+        <span>Subtotal</span><strong id="cart-total">Tsh 0</strong>
+      </div>
+      <button class="checkout-button" id="checkout-button">Checkout</button>
+      <p>Shipping calculated at checkout.</p>
+    </div>
+  </aside>
+
+  <!-- Modal for product -->
+  <div id="product-modal" class="product-modal" hidden>
+    <div class="modal-card" id="modal-content"></div>
+  </div>
+
+  <!-- Admin modal -->
+  <div id="admin-modal" class="admin-modal" hidden>
+    <div class="admin-card">
+      <h2>Upload product</h2>
+      <p class="admin-intro">Add a product for sale</p>
+      <form id="product-form">
+        <div class="admin-fields">
+          <div>
+            <label>Name<input name="name" required /></label>
+            <label>Category
+              <select name="category" required>
+                <option value="Seating">Seating</option>
+                <option value="Tables">Tables</option>
+                <option value="Bedrooms">Bedrooms</option>
+              </select>
+            </label>
+          </div>
+          <div>
+            <label>Price<input name="price" type="number" required /></label>
+            <label>Description<textarea name="description" required></textarea></label>
+          </div>
+        </div>
+
+        <label class="upload-area">
+          <span>Upload image</span>
+          <small>Max 5MB</small>
+          <input id="product-image" name="image" type="file" accept="image/*" />
+        </label>
+
+        <div id="image-preview" class="image-preview" hidden>
+          <img id="image-preview-img" alt="preview" />
+          <button type="button" data-action="remove-image" class="remove-preview">Remove</button>
+        </div>
+
+        <button type="submit" class="button">Upload</button>
+        <button type="button" data-action="close-admin" class="close-button">Close</button>
+      </form>
+
+      <div id="admin-products-list" style="margin-top:24px"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
